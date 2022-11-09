@@ -1,0 +1,1 @@
+# azure-servicehealth-alerting-automation
