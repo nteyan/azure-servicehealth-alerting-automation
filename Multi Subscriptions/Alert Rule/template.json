@@ -1,0 +1,67 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "alertRuleName": {
+      "defaultValue": "",
+      "type": "String",
+      "metadata": {
+        "description": "Alert Rule name for Service Issue"
+      }
+    },
+    "actionGroupExternalId": {
+      "defaultValue": "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/microsoft.insights/actionGroups/<ActionGroupName>",
+      "type": "String",
+      "metadata": {
+        "description": "Action Group Resource id"
+      }
+    },
+    "eventType": {
+      "type": "string",
+      "defaultValue": "Incident",
+      "allowedValues": [
+        "Incident",
+        "Maintenance"
+      ]
+    }
+  },
+    "variables": {},
+    "resources": [
+        {
+            "type": "microsoft.insights/activityLogAlerts",
+            "apiVersion": "2020-10-01",
+            "name": "[parameters('alertRuleName')]",
+            "location": "Global",
+            "properties": {
+                "scopes": [
+                    "[subscription().id]"
+                  ],
+                "condition": {
+                    "allOf": [
+                        {
+                            "field": "category",
+                            "equals": "ServiceHealth"
+                        },
+                      {
+                        "anyOf": [
+                          {
+                            "field": "properties.incidentType",
+                            "equals": "[parameters('eventType')]"
+                          }
+                        ]
+                      }
+                    ]
+                },
+                "actions": {
+                    "actionGroups": [
+                        {
+                            "actionGroupId": "[parameters('actionGroupExternalId')]",
+                            "webhookProperties": {}
+                        }
+                    ]
+                },
+                "enabled": true
+            }
+        }
+    ]
+}

@@ -1,0 +1,60 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "actionGroupsName": {
+            "defaultValue": "Action Group Name",
+            "type": "String",
+            "minLength": 1,
+            "metadata": {
+              "description": "Name for the Action group."
+            }
+        },
+        "groupShortName": {
+            "defaultValue": "GrpShortName",
+            "type": "String",
+            "minLength": 1,
+            "maxLength": 12,
+            "metadata": {
+              "description": "Short name for the Action group."
+            }
+        },
+        "emailAddress": {
+            "defaultValue": "@domain.com",
+            "type": "string",
+            "metadata": {
+                "description": "Email address."
+              }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "microsoft.insights/actionGroups",
+            "apiVersion": "2022-06-01",
+            "name": "[parameters('actionGroupsName')]",
+            "location": "Global",
+            "properties": {
+                "groupShortName": "[parameters('groupShortName')]",
+                "enabled": true,
+                "emailReceivers": [
+                    {
+                        "name": "email",
+                        "emailAddress": "[parameters('emailAddress')]",
+                        "useCommonAlertSchema": false
+                    }
+                ],
+                "smsReceivers": [],
+                "webhookReceivers": [],
+                "eventHubReceivers": [],
+                "itsmReceivers": [],
+                "azureAppPushReceivers": [],
+                "automationRunbookReceivers": [],
+                "voiceReceivers": [],
+                "logicAppReceivers": [],
+                "azureFunctionReceivers": [],
+                "armRoleReceivers": []
+            }
+        }
+    ]
+}
