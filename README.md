@@ -1,5 +1,5 @@
-## Azure Service Health Email Notification Template Starter Kit
-#  What is Azure Service Health?
+# Azure Service Health Email Notification Template Starter Kit
+##  What is Azure Service Health?
 Azure offers a suite of experiences to keep you informed about the health of your cloud resources. This information includes current and upcoming issues such as service impacting events, planned maintenance, and other changes that may affect your availability.
 
 Azure Service Health is a combination of three separate smaller services.

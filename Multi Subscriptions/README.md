@@ -1,8 +1,8 @@
-## Azure Service Health Email Notification Template - Multi Subscription
-# High Level Design
+# Azure Service Health Email Notification Template - Multi Subscription
+## High Level Design
 ![HLD](/images/mode1hld.png)
 
-# Use the template to deploy resources
+## Use the templates to deploy resources
 1. In the portal, search and select "Deploy a custom template"
 ![Deploy a custom template](/images/deploytemplate.png)
 
