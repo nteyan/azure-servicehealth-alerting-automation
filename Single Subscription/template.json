@@ -38,7 +38,8 @@
     "defaultValue": "Incident",
     "allowedValues": [
       "Incident",
-      "Maintenance"
+      "Maintenance",
+      "Security"
     ]
   }
   },
