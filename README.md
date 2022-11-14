@@ -13,3 +13,5 @@ Resource health provides information about the health of your individual cloud r
 Together, these experiences provide you with a comprehensive view into the health of Azure, at the granularity that is most relevant to you.
 
 In this repository, you will find a "Starter Kit" to activate email notification on Service Health events.
+
+Source : https://learn.microsoft.com/en-us/azure/service-health/
