@@ -1,1 +1,1 @@
-# azure-servicehealth-alerting-automation
+# Azure Service Health Email Notification Template Starter Kit
