@@ -11,3 +11,6 @@
 
 3. Select "Load File" and choose the related template.json file
 ![Load Template](/images/loadtemplate.png)
+
+4. Fill out the form and select "Review + Create".
+![Template](/images/gtemplate.png)
