@@ -15,3 +15,5 @@ Together, these experiences provide you with a comprehensive view into the healt
 In this repository, you will find a "Starter Kit" to activate email notification on Service Health events.
 
 Source : https://learn.microsoft.com/en-us/azure/service-health/
+
+You can also use the quickstart demo template provided by Microsoft : https://learn.microsoft.com/en-in/samples/azure/azure-quickstart-templates/monitor-servicehealth-alert/
