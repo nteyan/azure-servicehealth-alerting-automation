@@ -60,13 +60,7 @@
                   "resourceGroupName": {
                     "type": "string"
                   },
-                  "actionGroupName": {
-                    "type": "string"
-                  },
-                  "actionGroupShortName": {
-                    "type": "string"
-                  },
-                  "emailAddress": {
+                  "actionGroupId": {
                     "type": "string"
                   },
                   "activityLogAlertName": {
@@ -96,29 +90,10 @@
                         "contentVersion": "1.0.0.0",
                         "resources": [
                           {
-                            "type": "Microsoft.Insights/actionGroups",
-                            "apiVersion": "2019-06-01",
-                            "name": "[parameters('actionGroupName')]",
-                            "location": "Global",
-                            "properties": {
-                              "groupShortName": "[parameters('actionGroupShortName')]",
-                              "enabled": true,
-                              "emailReceivers": [
-                                {
-                                  "name": "emailReceiver",
-                                  "emailAddress": "[parameters('emailAddress')]"
-                                }
-                              ]
-                            }
-                          },
-                          {
                             "type": "Microsoft.Insights/activityLogAlerts",
                             "apiVersion": "2020-10-01",
                             "name": "[parameters('activityLogAlertName')]",
                             "location": "Global",
-                            "dependsOn": [
-                              "[parameters('actionGroupName')]"
-                            ],
                             "properties": {
                               "enabled": true,
                               "scopes": [
@@ -139,7 +114,7 @@
                               "actions": {
                                 "actionGroups": [
                                   {
-                                    "actionGroupId": "[concat('/subscriptions/', subscription().subscriptionid, '/resourceGroups/', parameters('resourceGroupName'), '/providers/microsoft.insights/actionGroups/', parameters('actionGroupName'))]"
+                                    "actionGroupId": "[parameters('actionGroupId')]"
                                   }
                                 ]
                               }
@@ -155,14 +130,8 @@
                 "resourceGroupName": {
                   "value": "[parameters('resourceGroupName')]"
                 },
-                "actionGroupName": {
-                  "value": "[parameters('actionGroupName')]"
-                },
-                "actionGroupShortName": {
-                  "value": "[parameters('actionGroupShortName')]"
-                },
-                "emailAddress": {
-                  "value": "[parameters('emailAddress')]"
+                "actionGroupId": {
+                  "value": "[parameters('actionGroupId')]"
                 },
                 "activityLogAlertName": {
                   "value": "[parameters('activityLogAlertName')]"
@@ -181,28 +150,13 @@
           "description": null
         }
       },
-      "actionGroupName": {
+      "actionGroupId": {
         "type": "String",
         "metadata": {
-          "displayName": "actionGroupName",
-          "description": "Name for the Action group."
+          "displayName": "actionGroupId",
+          "description": "Action Group Resource ID (/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/microsoft.insights/actionGroups/<ActionGroupName>)"
         },
-        "defaultValue": "serviceHealthActionGroup"
-      },
-      "actionGroupShortName": {
-        "type": "String",
-        "metadata": {
-          "displayName": "actionGroupShortName",
-          "description": "Short name for the Action group."
-        },
-        "defaultValue": "serviceAG"
-      },
-      "emailAddress": {
-        "type": "String",
-        "metadata": {
-          "displayName": "emailAddress",
-          "description": "Email address."
-        }
+        "defaultValue": "/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/microsoft.insights/actionGroups/<ActionGroupName>"
       },
       "activityLogAlertName": {
         "type": "String",
