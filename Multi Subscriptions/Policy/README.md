@@ -1,5 +1,10 @@
 # Azure Service Health Email Notification Template - Multi Subscription deployment with Azure Policy
 
+## Folder content and description
+- [policy4all.json](https://github.com/nteyan/azure-servicehealth-alerting-automation/blob/main/Multi%20Subscriptions/Policy/policy4all.json): Deploy alert rules for all Service Health alert (All regions, all Services, all event types)
+- [policy4incident.json](https://github.com/nteyan/azure-servicehealth-alerting-automation/blob/main/Multi%20Subscriptions/Policy/policy4incident.json): Deploy alert rules for all Service Health Service Issue (All regions, all Services)
+- [policy4security.json](https://github.com/nteyan/azure-servicehealth-alerting-automation/blob/main/Multi%20Subscriptions/Policy/policy4security.json): Deploy alert rules for all Service Health Security Issue (All regions, all Services)
+
 ## Use the templates to deploy resources
 1. To deploy this policy, you have to create an Action Group (the only requierement for this resource is to be deployed in the same tenant)
 
